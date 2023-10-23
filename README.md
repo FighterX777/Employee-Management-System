@@ -13,7 +13,7 @@ work-related details of employees. This makes
 it easier for the managers to store and access 
 relevant data when needed.
 
-. Benefits of the project:
+• Benefits of the project:
 
 Here are some benefits of using employee management 
 software: 
