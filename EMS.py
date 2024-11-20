@@ -33,9 +33,7 @@ def createTable():
   db=con.connect(host='localhost',user=username,password=password,database=ds) 
   cur=db.cursor() 
   table=input("Enter name of your table: ") 
-  cur.execute("create table {}(eno int(5),name varchar(30),age int(3),salary 
-float(9,2),allowance float(9,2),doj date,department varchar(15),designation 
-varchar(15),address varchar(30))".format(table)) 
+  cur.execute("create table {}(eno int(5),name varchar(30),age int(3),salary float(9,2),allowance float(9,2),doj date,department varchar(15),designation varchar(15),address varchar(30))".format(table)) 
   db.commit() 
   db.close() 
  
@@ -45,8 +43,7 @@ def createSalTable():
   cur=db.cursor() 
  
   table=input("Enter name of your table: ") 
-  cur.execute("create table {}(eno int(5), epf int(5),insurance int(5),proftax 
-int(5))".format(table)) 
+  cur.execute("create table {}(eno int(5), epf int(5),insurance int(5),proftax int(5))".format(table)) 
   db.commit() 
   db.close() 
  
@@ -65,8 +62,7 @@ def salinsert():
   insurance=int(input("Enter insurance of employee: ")) 
   pt=int(input("Enter Professional Tax(%) of employee: ")) 
   prof=sal*(pt/100) 
-  cur.execute("insert into {} values 
-({},{},{},{})".format(table1,eno,epf,insurance,prof)) 
+  cur.execute("insert into {} values({},{},{},{})".format(table1,eno,epf,insurance,prof)) 
   db.commit() 
   db.close() 
  
@@ -76,10 +72,7 @@ def grosssal():
   cur=db.cursor() 
   table1=input("Enter name of your first table to be joined: ") 
   table2=input("Enter the name of your second table to be joined: ") 
-  cur.execute("select {}.eno,{}.name,({}.salary+{}.allowance)
-({}.epf+{}.insurance+{}.proftax) 'gross salary' from {},{} where 
-{}.eno={}.eno".format(table1,table1,table1,table1,table2,table2,table2,table1,
- table2,table1,table2)) 
+  cur.execute("select {}.eno,{}.name,({}.salary+{}.allowance)({}.epf+{}.insurance+{}.proftax) 'gross salary' from {},{} where {}.eno={}.eno".format(table1,table1,table1,table1,table2,table2,table2,table1,table2,table1,table2)) 
   r=cur.fetchall() 
   print("x","-"*80,"x") 
   print("\t Eno\t\t\tName of Employee\t\tGross Salary") 
@@ -105,9 +98,7 @@ def insert():
   department=input("Enter Department of employee: ") 
   designation=input("Enter Designation of employee: ") 
   address=input("Enter Address of employee: ") 
-  cur.execute("insert into {} values 
-({},'{}',{},{},{},'{}','{}','{}','{}')".format(table,eno,name,age,sal,allowanc
- e,doj,department,designation,address)) 
+  cur.execute("insert into {} values({},'{}',{},{},{},'{}','{}','{}','{}')".format(table,eno,name,age,sal,allowance,doj,department,designation,address)) 
   db.commit() 
   db.close() 
  
@@ -154,33 +145,28 @@ def update():
     db.close() 
   elif r==5: 
     department=input("Enter department of employee: ") 
-    cur.execute("update {} set department='{}' where 
-eno={}".format(table,department,eno)) 
+    cur.execute("update {} set department='{}' where eno={}".format(table,department,eno)) 
     db.commit() 
     db.close() 
   elif r==6: 
     designation=input("Enter designation of employee: ") 
-    cur.execute("update {} set designation='{}' where 
-eno={}".format(table,designation,eno)) 
+    cur.execute("update {} set designation='{}' where eno={}".format(table,designation,eno)) 
     db.commit() 
     db.close() 
   elif r==7: 
     address=input("Enter address of employee: ") 
-    cur.execute("update {} set address='{}' where 
-eno={}".format(table,address,eno)) 
+    cur.execute("update {} set address='{}' where eno={}".format(table,address,eno)) 
     db.commit() 
     db.close() 
   elif r==8: 
     insurance=int(input("Enter insurance of employee: ")) 
-    cur.execute("update {} set insurance='{}' where 
-eno={}".format(table,insurance,eno)) 
+    cur.execute("update {} set insurance='{}' where eno={}".format(table,insurance,eno)) 
     db.commit() 
     db.close() 
   elif r==9: 
     pt=int(input("Enter Professional Tax(%) of employee: ")) 
     prof=sal*(pt/100) 
-    cur.execute("update {} set address='{}' where 
-eno={}".format(table,prof,eno)) 
+    cur.execute("update {} set address='{}' where eno={}".format(table,prof,eno)) 
     db.commit() 
     db.close() 
   else: 
